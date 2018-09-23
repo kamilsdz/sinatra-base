@@ -6,6 +6,6 @@ class UsersController < BaseApp
 
   get '/users/:id' do
     @user = User.find(params[:id])
-    "Username!: #{ @user.username }"
+    "Username: #{ @user.username }"
   end
 end

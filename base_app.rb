@@ -8,6 +8,11 @@ require 'json'
 
 class BaseApp < Sinatra::Base
 
+  configure :development do
+    register Sinatra::Reloader
+    also_reload './app/*.rb'
+  end
+
   Dir.glob('./app/models/*.rb').sort.each do |file|
     require file
   end
@@ -18,11 +23,6 @@ class BaseApp < Sinatra::Base
 
   Dir.glob('./config/initializers/*.rb').sort.each do |file|
     require file
-  end
-
-  configure :development do
-    register Sinatra::Reloader
-    also_reload './app/*.rb'
   end
 
   before do
