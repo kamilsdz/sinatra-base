@@ -1,6 +1,21 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: sinatra_development
   pool: 5
   timeout: 5000
+
+development:
+  <<: *default
+  database: sinatra_development
+
+test:
+  <<: *default
+  database: sinatra_test
+
+production:
+  <<: *default
+  database: sinatra_production
+
+profiler:
+  <<: *default
+  database: sinatra_development
